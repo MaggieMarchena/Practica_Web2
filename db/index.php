@@ -1,6 +1,17 @@
 <?php
 
+  define('FALSE', 0);
+  define('TRUE', 1);
+
   include_once 'tasks.php';
+
+  function addTask(){
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $done = isset($_POST['done']) ? $_POST['done'] : FALSE;
+    setTask($title, $description, $done);
+    header("Location: home");
+  }
 
   function home(){
 
@@ -26,23 +37,29 @@
   <?php
 
     foreach ($tasks as $task) {
-      echo '<li class="list-group-item">'.$task['title'].': '.$task['description'].'</li>';
+      if ($task['done']) {
+        echo '<li class="list-group-item"><s>'.$task['title'].': '.$task['description'].'</s></li>';
+      }
+      else {
+        echo '<li class="list-group-item">'.$task['title'].': '.$task['description'].'</li>';
+      }
+
     }
 
   ?>
               </ul>
 
-              <form>
+              <form action="addTask" method="post">
                 <div class="form-group">
                   <label for="title">Título</label>
-                  <input type="text" class="form-control" id="title" placeholder="Titulo de la tarea">
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Titulo de la tarea">
                 </div>
                 <div class="form-group">
                   <label for="description">Descripcion</label>
-                  <textarea name="description" id="description" rows="8" cols="75"></textarea>
+                  <textarea name="description" id="description" name="description" rows="8" cols="75"></textarea>
                 </div>
                 <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="done">
+                  <input type="checkbox" class="form-check-input" id="done" name="done" value="1">
                   <label for="done">Completada</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Crear</button>

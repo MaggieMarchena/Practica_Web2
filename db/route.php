@@ -1,7 +1,6 @@
 <?php
   define('ACTION', 0);
   define('PARAM', 1);
-  define('PARAM2', 2);
 
   include_once 'config/ConfigApp.php';
   include_once 'index.php';
