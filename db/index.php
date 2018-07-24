@@ -18,6 +18,11 @@
     header('Location: '.HOME);
   }
 
+  function changeTaskStatus($params){
+    markTaskDone($params[0]);
+    header('Location: '.HOME);
+  }
+
   function home(){
 
     $tasks = getTasks();
@@ -47,7 +52,7 @@
         echo '<li class="list-group-item"><s>'.$task['title'].': '.$task['description'].'</s><a href="deleteTask/'.$task['id_task'].'"><i class="fas fa-trash"></i></a></li>';
       }
       else {
-        echo '<li class="list-group-item">'.$task['title'].': '.$task['description'].'</s><a href="deleteTask/'.$task['id_task'].'"><i class="fas fa-trash"></i></a></li>';
+        echo '<li class="list-group-item">'.$task['title'].': '.$task['description'].'</s><a href="deleteTask/'.$task['id_task'].'"><i class="fas fa-trash"></i></a><a href="changeTaskStatus/'.$task['id_task'].'"><i class="far fa-check-square"></i></a></li>';
       }
 
     }

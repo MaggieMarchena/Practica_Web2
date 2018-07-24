@@ -10,6 +10,12 @@
     return $query->execute([$id_task]);
   }
 
+  function markTaskDone($id_task){
+    $db = connect();
+    $query = $db->prepare("update task set done=1 where id_task=?");
+    return $query->execute([$id_task]);
+  }
+
   function getTasks(){
     $db = connect();
     $query = $db->prepare("select * from task");

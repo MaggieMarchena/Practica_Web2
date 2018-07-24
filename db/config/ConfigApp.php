@@ -7,7 +7,8 @@
       ''=> 'home',
       'home'=> 'home',
       'addTask'=> 'addTask',
-      'deleteTask'=> 'deleteTasks'
+      'deleteTask'=> 'deleteTasks',
+      'changeTaskStatus'=> 'changeTaskStatus'
     ];
   }
 
