@@ -1,7 +1,7 @@
 <?php
 
   define('FALSE', 0);
-  // define('TRUE', 1);
+  define('HOME', 'http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']).'/');
 
   include_once 'tasks.php';
 
@@ -10,7 +10,12 @@
     $description = $_POST['description'];
     $done = isset($_POST['done']) ? $_POST['done'] : FALSE;
     setTask($title, $description, $done);
-    header("Location: home");
+    header('Location: '.HOME);
+  }
+
+  function deleteTasks($params){
+    deleteTask($params[0]);
+    header('Location: '.HOME);
   }
 
   function home(){
@@ -24,6 +29,7 @@
       <head>
         <meta charset="utf-8">
         <title>To Do App</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
       </head>
       <body>
@@ -38,10 +44,10 @@
 
     foreach ($tasks as $task) {
       if ($task['done']) {
-        echo '<li class="list-group-item"><s>'.$task['title'].': '.$task['description'].'</s></li>';
+        echo '<li class="list-group-item"><s>'.$task['title'].': '.$task['description'].'</s><a href="deleteTask/'.$task['id_task'].'"><i class="fas fa-trash"></i></a></li>';
       }
       else {
-        echo '<li class="list-group-item">'.$task['title'].': '.$task['description'].'</li>';
+        echo '<li class="list-group-item">'.$task['title'].': '.$task['description'].'</s><a href="deleteTask/'.$task['id_task'].'"><i class="fas fa-trash"></i></a></li>';
       }
 
     }

@@ -4,6 +4,12 @@
     return new PDO('mysql:host=localhost;'.'dbname=ToDo_app;charset=utf8', 'root', '');
   }
 
+  function deleteTask($id_task){
+    $db = connect();
+    $query = $db->prepare("delete from task where id_task=?");
+    return $query->execute([$id_task]);
+  }
+
   function getTasks(){
     $db = connect();
     $query = $db->prepare("select * from task");

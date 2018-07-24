@@ -6,7 +6,8 @@
     public static $ACTIONS = [
       ''=> 'home',
       'home'=> 'home',
-      'addTask'=> 'addTask'
+      'addTask'=> 'addTask',
+      'deleteTask'=> 'deleteTasks'
     ];
   }
 
