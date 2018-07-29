@@ -4,8 +4,8 @@
     public static $ACTION = 'action';
     public static $PARAMS = 'params';
     public static $ACTIONS = [
-      ''=> 'home',
-      'home'=> 'home',
+      ''=> 'index',
+      'home'=> 'index',
       'tasks'=> 'showTasks',
       'addTask'=> 'addTask',
       'deleteTask'=> 'deleteTasks',

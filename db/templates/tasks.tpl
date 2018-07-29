@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <ul class="list-group">
 
 {foreach from=$tasks item=task}

@@ -1,11 +1,13 @@
+<!DOCTYPE html>
+
 {include file="header.tpl"}
 <div class="row">
   <div class="col-6 offset-3">
     <h1>Lista de Tareas</h1>
 
-    <div class="container-fluid" id="tasks">
-
-    </div>
+    <!-- <div class="container-fluid" id="tasks"> -->
+      {include file="tasks.tpl"}
+    <!-- </div> -->
 
     <form action="addTask" method="post">
       <div class="form-group">
