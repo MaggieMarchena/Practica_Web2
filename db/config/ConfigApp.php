@@ -4,10 +4,11 @@
     public static $ACTION = 'action';
     public static $PARAMS = 'params';
     public static $ACTIONS = [
-      ''=> 'index',
-      'home'=> 'index',
+      ''=> 'showPage',
+      'home'=> 'showPage',
       'tasks'=> 'showTasks',
-      'addTask'=> 'addTask',
+      'addTask'=> 'create',
+      'saveTask'=> 'store',
       'deleteTask'=> 'deleteTasks',
       'changeTaskStatus'=> 'changeTaskStatus'
     ];

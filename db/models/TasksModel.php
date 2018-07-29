@@ -16,6 +16,11 @@
       return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function saveTask($title, $description, $done){
+      $query = $this->db->prepare("INSERT INTO task(title, description, done) VALUES(?,?,?)");
+      $query->execute([$title, $description, $done]);
+    }
+
   }
 
 ?>

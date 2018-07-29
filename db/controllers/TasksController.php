@@ -2,6 +2,8 @@
 
   include_once 'models/TasksModel.php';
   include_once 'views/TasksView.php';
+
+  define('HOME', 'http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']).'/');
 /**
  *
  */
@@ -15,9 +17,26 @@
       $this->view = new TasksView();
     }
 
-    public function index(){
+    public function showPage(){
       $tasks = $this->model->getTasks();
       $this->view->showTasks($tasks);
+    }
+
+    public function create(){
+      $this->view->showForm();
+    }
+
+    public function store(){
+      if(isset($_POST['title'])){
+        $title = $_POST['title'];
+        $description = isset($_POST['description']) ? $_POST['description'] : '';
+        $done = isset($_POST['done']) ? $_POST['done'] : 0;
+        $this->model->saveTask($title, $description, $done);
+        header('Location: '.HOME);
+      }
+      else {
+        $this->view->showCreateError("El campo título es requerido");
+      }
     }
 
   }
