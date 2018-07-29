@@ -14,6 +14,8 @@
     }
 
     function showTasks($tasks){
+      $mainTitle = 'To Do App';
+      $this->smarty->assign('mainTitle', $mainTitle);
       $this->smarty->assign('tasks', $tasks);
       $this->smarty->display('templates/index.tpl');
     }
