@@ -21,6 +21,11 @@
       $query->execute([$title, $description, $done]);
     }
 
+    function deleteTask($id_task){
+      $query = $this->db->prepare("delete from task where id_task=?");
+      $query->execute([$id_task]);                                              //return si quiero comprobar si funco y tirar error
+    }
+
   }
 
 ?>

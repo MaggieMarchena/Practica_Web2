@@ -39,6 +39,12 @@
       }
     }
 
+    public function delete($params){
+      $id_task = $params[0];
+      $this->model->deleteTask($id_task);
+      header('Location: '.HOME);
+    }
+
   }
 
 ?>

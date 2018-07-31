@@ -9,7 +9,7 @@
       'tasks'=> 'showTasks',
       'addTask'=> 'create',
       'saveTask'=> 'store',
-      'deleteTask'=> 'deleteTasks',
+      'deleteTask'=> 'delete',
       'changeTaskStatus'=> 'changeTaskStatus'
     ];
   }
