@@ -27,15 +27,15 @@
     }
 
     public function store(){
-      if(isset($_POST['title'])){
-        $title = $_POST['title'];
-        $description = isset($_POST['description']) ? $_POST['description'] : '';
-        $done = isset($_POST['done']) ? $_POST['done'] : 0;
+      $title = $_POST['title'];
+      $description = $_POST['description'];
+      $done = isset($_POST['done']) ? $_POST['done'] : 0;
+      if(!empty($_POST['title'])){
         $this->model->saveTask($title, $description, $done);
         header('Location: '.HOME);
       }
       else {
-        $this->view->showCreateError("El campo título es requerido");
+        $this->view->showCreateError("El campo título es requerido", $title, $description, $done);
       }
     }
 
