@@ -54,7 +54,13 @@
 
     public function hasForbidden($title){
       $forbidden = ['Me gustaría', 'Quisiera', 'Estoy pensando en'];
-      return in_array($title, $forbidden);
+      foreach ($forbidden as $word) {
+        if (strpos($title, $word) !== false){
+          return true;
+        }
+      }
+      return false;
+
     }
 
   }

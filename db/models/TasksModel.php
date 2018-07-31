@@ -26,6 +26,11 @@
       $query->execute([$id_task]);                                              //return si quiero comprobar si funco y tirar error
     }
 
+    function markTaskDone($id_task){
+      $query = $this->db->prepare("update task set done=1 where id_task=?");
+      $query->execute([$id_task]);
+    }
+
   }
 
 ?>

@@ -4,13 +4,14 @@
     public static $ACTION = 'action';
     public static $PARAMS = 'params';
     public static $ACTIONS = [
-      ''=> 'showPage',
-      'home'=> 'showPage',
-      'tasks'=> 'showTasks',
-      'addTask'=> 'create',
-      'saveTask'=> 'store',
-      'deleteTask'=> 'delete',
-      'changeTaskStatus'=> 'changeTaskStatus'
+      //llaman a controller
+      ''=> 'TasksController#showPage',            //lo que viene como param => el método del controller al que llama
+      'home'=> 'TasksController#showPage',
+      'tasks'=> 'TasksController#showPage',
+      'addTask'=> 'TasksController#create',
+      'saveTask'=> 'TasksController#store',
+      'deleteTask'=> 'TasksController#delete',
+      //'changeTaskStatus'=> 'changeTaskStatus'
     ];
   }
 

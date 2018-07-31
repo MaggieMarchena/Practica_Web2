@@ -4,14 +4,12 @@
   include_once 'controllers/TasksController.php';
 
   define('ACTION', 0);
-  define('PARAM', 1);
-
-  $controllerTasks = new TasksController();
+  define('PARAMS', 1);
 
   function parseUrl($url){
     $urlExploded = explode('/', $url);
     $arrayReturn[ConfigApp::$ACTION] = $urlExploded[ACTION];
-    $arrayReturn[ConfigApp::$PARAMS] = isset ($urlExploded[PARAM]) ? array_slice($urlExploded, PARAM) : null;
+    $arrayReturn[ConfigApp::$PARAMS] = isset ($urlExploded[PARAMS]) ? array_slice($urlExploded, PARAMS) : null;
     return $arrayReturn;
   }
 
@@ -20,45 +18,18 @@
     $action = $urlData[ConfigApp::$ACTION];
     if(array_key_exists($action, ConfigApp::$ACTIONS)){
       $params = $urlData[ConfigApp::$PARAMS];
-      $methodName = ConfigApp::$ACTIONS[$action];
+      $action = explode('#', ConfigApp::$ACTIONS[$action]);
+      //recibo por ej TasksController#showPage, hago explode por #, array [0]-> TasksController [1]-> showPage
+      $controller = new $action[0]();
+      //se interpreta el string como el nombre del controller 'cause php *eye roll*
+      $methodName = $action[1];
       if(isset($params) && $params != null){
-        echo $controllerTasks->$methodName($params);
+        echo $controller->$methodName($params);
       }
       else {
-        echo $controllerTasks->$methodName();
+        echo $controller->$methodName();
       }
     }
   }
 
-  // $controllerTasks = new TasksController();
-  // $controllerTasks->showPage();
-
-  // define('ACTION', 0);
-  // define('PARAM', 1);
-  //
-  // include_once 'config/ConfigApp.php';
-  // include_once 'index.php';
-  //
-  // function parseUrl($url){
-  //   $urlExploded = explode('/', $url);
-  //   $arrayReturn[ConfigApp::$ACTION] = $urlExploded[ACTION];
-  //   $arrayReturn[ConfigApp::$PARAMS] = isset ($urlExploded[PARAM]) ? array_slice($urlExploded, PARAM) : null;
-  //
-  //   return $arrayReturn;
-  // }
-  //
-  // if(isset($_GET['action'])){
-  //   $urlData = parseUrl($_GET['action']);
-  //   $action = $urlData[ConfigApp::$ACTION];
-  //   if(array_key_exists($action, ConfigApp::$ACTIONS)){
-  //     $params = $urlData[ConfigApp::$PARAMS];
-  //     $methodName = ConfigApp::$ACTIONS[$action];
-  //     if(isset($params) && $params != null){
-  //       echo $methodName($params);
-  //     }
-  //     else {
-  //       echo $methodName();
-  //     }
-  //   }
-  // }
 ?>
