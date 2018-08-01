@@ -15,7 +15,11 @@
       $query->execute();
       return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
+    function saveForbiddenWord($word){
+      $query = $this->db->prepare("INSERT INTO forbiddenWord(word) VALUES(?)");
+      $query->execute([$word]);
+    }
   }
 
 ?>

@@ -19,10 +19,9 @@
       $this->smarty->display('templates/ForbiddenWords/index.tpl');
     }
 
-    // function showForm(){
-    //   $this->assignTaskToForm();
-    //   $this->smarty->display('templates/formCreate.tpl');
-    // }
+    function showForm(){
+      $this->smarty->display('templates/ForbiddenWords/formCreate.tpl');
+    }
 
   }
 
