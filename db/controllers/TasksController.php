@@ -12,7 +12,6 @@
 
     private $view;
     private $tasksModel;
-    private $forbiddenWordsModel;
 
     function __construct(){
       $this->tasksModel = new TasksModel();

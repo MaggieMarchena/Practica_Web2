@@ -32,6 +32,12 @@
 
     }
 
+    public function delete($params){
+      $id_word = $params[0];
+      $this->model->deleteForbiddenWord($id_word);
+      header('Location: '.HOME.'/forbiddenWords');
+    }
+
   }
 
 ?>

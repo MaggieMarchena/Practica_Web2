@@ -20,6 +20,11 @@
       $query = $this->db->prepare("INSERT INTO forbiddenWord(word) VALUES(?)");
       $query->execute([$word]);
     }
+
+    function deleteForbiddenWord($id_word){
+      $query = $this->db->prepare("delete from forbiddenWord where id_word=?");
+      $query->execute([$id_word]);
+    }
   }
 
 ?>

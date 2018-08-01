@@ -16,7 +16,8 @@
 
       'forbiddenWords'=> 'ForbiddenWordsController#showPage',
       'addForbiddenWord'=> 'ForbiddenWordsController#create',
-      'saveForbiddenWord'=> 'ForbiddenWordsController#store'
+      'saveForbiddenWord'=> 'ForbiddenWordsController#store',
+      'deleteForbiddenWord'=> 'ForbiddenWordsController#delete',
 
     ];
   }
