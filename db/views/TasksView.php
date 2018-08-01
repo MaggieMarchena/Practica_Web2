@@ -1,18 +1,6 @@
 <?php
 
-  include_once 'libs/Smarty.class.php';
-
-  /**
-   *
-   */
-  class TasksView {
-
-    private $smarty;
-
-    function __construct(){
-      $this->smarty = new Smarty();
-      $this->smarty->assign('mainTitle', 'To Do App');
-    }
+  class TasksView extends View{
 
     function showTasks($tasks){
       $this->smarty->assign('tasks', $tasks);

@@ -3,13 +3,7 @@
   include_once 'views/ForbiddenWordsView.php';
   include_once 'models/ForbiddenWordsModel.php';
 
-/**
- *
- */
-  class ForbiddenWordsController {
-
-    private $view;
-    private $model;
+  class ForbiddenWordsController extends Controller{
 
     function __construct(){
       $this->model = new ForbiddenWordsModel();

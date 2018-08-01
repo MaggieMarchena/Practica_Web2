@@ -4,14 +4,7 @@
   include_once 'views/TasksView.php';
   include_once 'models/ForbiddenWordsModel.php';
 
-  define('HOME', 'http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']).'/');
-/**
- *
- */
-  class TasksController {
-
-    private $view;
-    private $tasksModel;
+  class TasksController extends Controller{
 
     function __construct(){
       $this->tasksModel = new TasksModel();

@@ -1,14 +1,6 @@
 <?php
-/**
- *
- */
-  class ForbiddenWordsModel {
 
-    private $db;
-
-    function __construct(){
-      $this->db = new PDO('mysql:host=localhost;'.'dbname=ToDo_app;charset=utf8', 'root', '');
-    }
+  class ForbiddenWordsModel extends Model{
 
     function getForbiddenWords(){
       $query = $this->db->prepare("select * from forbiddenWord");

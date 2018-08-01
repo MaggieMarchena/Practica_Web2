@@ -5,7 +5,8 @@
   <div class="col-6 offset-3">
     <h1>Lista de Palabras Prohibidas</h1>
 
-    <a href="addForbiddenWord">Agregar</a>
+    <a href="addForbiddenWord">Agregar</a> |
+    <a href="home">Lista de Tareas</a>
 
     <!-- <div class="container-fluid" id="tasks"> -->
       {include file="./forbiddenWords.tpl"}

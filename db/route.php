@@ -1,6 +1,9 @@
 <?php
 
   include_once 'config/ConfigApp.php';
+  include_once 'controllers/Controller.php';
+  include_once 'models/Model.php';
+  include_once 'views/View.php';
   include_once 'controllers/TasksController.php';
   include_once 'controllers/ForbiddenWordsController.php';
 
