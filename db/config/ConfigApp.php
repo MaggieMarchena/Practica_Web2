@@ -8,10 +8,11 @@
       ''=> 'TasksController#showPage',            //lo que viene como param => el método del controller al que llama
       'home'=> 'TasksController#showPage',
       'tasks'=> 'TasksController#showPage',
+      'forbiddenWords'=> 'ForbiddenWordsController#showPage',
       'addTask'=> 'TasksController#create',
       'saveTask'=> 'TasksController#store',
       'deleteTask'=> 'TasksController#delete',
-      //'changeTaskStatus'=> 'changeTaskStatus'
+      'markTaskDone'=> 'TasksController#update'
     ];
   }
 

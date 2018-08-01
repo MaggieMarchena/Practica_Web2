@@ -2,6 +2,7 @@
 
   include_once 'config/ConfigApp.php';
   include_once 'controllers/TasksController.php';
+  include_once 'controllers/ForbiddenWordsController.php';
 
   define('ACTION', 0);
   define('PARAMS', 1);

@@ -6,6 +6,7 @@
     <h1>Lista de Tareas</h1>
 
     <a href="addTask">Agregar Tarea</a>
+    <a href="forbiddenWords">Lista de palabras prohibidas</a>
 
     <!-- <div class="container-fluid" id="tasks"> -->
       {include file="tasks.tpl"}

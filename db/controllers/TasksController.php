@@ -2,6 +2,7 @@
 
   include_once 'models/TasksModel.php';
   include_once 'views/TasksView.php';
+  include_once 'models/ForbiddenWordsModel.php';
 
   define('HOME', 'http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF']).'/');
 /**
@@ -10,15 +11,17 @@
   class TasksController {
 
     private $view;
-    private $model;
+    private $tasksModel;
+    private $forbiddenWordsModel;
 
     function __construct(){
-      $this->model = new TasksModel();
+      $this->tasksModel = new TasksModel();
+      $this->forbiddenWordsModel = new ForbiddenWordsModel();
       $this->view = new TasksView();
     }
 
     public function showPage(){
-      $tasks = $this->model->getTasks();
+      $tasks = $this->tasksModel->getTasks();
       $this->view->showTasks($tasks);
     }
 
@@ -37,7 +40,7 @@
           $this->view->showCreateError("El título contiene palabras prohibidas", $title, $description, $done);
         }
         else {
-          $this->model->saveTask($title, $description, $done);
+          $this->tasksModel->saveTask($title, $description, $done);
           header('Location: '.HOME);
         }
       }
@@ -48,14 +51,20 @@
 
     public function delete($params){
       $id_task = $params[0];
-      $this->model->deleteTask($id_task);
+      $this->tasksModel->deleteTask($id_task);
       header('Location: '.HOME);
     }
 
-    public function hasForbidden($title){
-      $forbidden = ['Me gustaría', 'Quisiera', 'Estoy pensando en'];
+    public function update($params){
+      $id_task = $params[0];
+      $this->tasksModel->markTaskDone($id_task);
+      header('Location: '.HOME);
+    }
+
+    private function hasForbidden($title){
+      $forbidden = $this->forbiddenWordsModel->getForbiddenWords();
       foreach ($forbidden as $word) {
-        if (strpos($title, $word) !== false){
+        if (strpos($title, $word['word']) !== false){
           return true;
         }
       }
