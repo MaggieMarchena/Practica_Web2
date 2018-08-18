@@ -6,6 +6,7 @@
   include_once 'views/View.php';
   include_once 'controllers/TasksController.php';
   include_once 'controllers/ForbiddenWordsController.php';
+  include_once 'controllers/LoginController.php';
 
   define('ACTION', 0);
   define('PARAMS', 1);

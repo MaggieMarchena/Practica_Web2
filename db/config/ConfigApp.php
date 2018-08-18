@@ -19,6 +19,9 @@
       'saveForbiddenWord'=> 'ForbiddenWordsController#store',
       'deleteForbiddenWord'=> 'ForbiddenWordsController#delete',
 
+      'login'=> 'LoginController#index',
+      'verifyUser'=> 'LoginController#verify',
+
     ];
   }
 
