@@ -7,7 +7,14 @@
 
     function __construct(){
       session_start();
-      if (!isset($_SESSION['username'])){
+      if (isset($_SESSION['username'])){
+        if (time() - $_SESSION['LAST_ACTIVITY'] > 10) {
+          header('Location: '.LOGOUT);
+          die();
+        }
+        $_SESSION['LAST_ACTIVITY'] = time();
+      }
+      else {
         header('Location: '.LOGIN);
         die();
       }

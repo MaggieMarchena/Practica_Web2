@@ -25,6 +25,7 @@
         if (!empty($user) && password_verify($password, $user[0]['password'])) {
           session_start();
           $_SESSION['username'] = $username;
+          $_SESSION['LAST_ACTIVITY'] = time();
           header('Location: '.HOME);
         }
         else {
