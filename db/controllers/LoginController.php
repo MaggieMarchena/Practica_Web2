@@ -23,6 +23,8 @@
         $user = $this->model->getUser($username);
         print_r($user);
         if (!empty($user) && password_verify($password, $user[0]['password'])) {
+          session_start();
+          $_SESSION['username'] = $username;
           header('Location: '.HOME);
         }
         else {
@@ -30,6 +32,12 @@
         }
       }
 
+    }
+
+    public function destroy(){
+      session_start();
+      session_destroy();
+      header('Location: '.LOGIN);
     }
 
     // public function create(){

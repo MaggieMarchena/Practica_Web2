@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+{if !empty($session)}
+  <button type="button" name="logout"><a href="logout">Logout</a></button>
+{/if}
+
 <ul class="list-group">
 
 {foreach from=$tasks item=task}

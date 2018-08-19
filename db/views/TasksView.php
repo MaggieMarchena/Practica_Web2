@@ -2,8 +2,11 @@
 
   class TasksView extends View{
 
-    function showTasks($tasks){
+    function showTasks($tasks, $session = ''){
       $this->smarty->assign('tasks', $tasks);
+      if (!empty($session)) {
+        $this->smarty->assign('session', $session);
+      }
       $this->smarty->display('templates/index.tpl');
     }
 

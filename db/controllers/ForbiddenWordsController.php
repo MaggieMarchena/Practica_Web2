@@ -3,9 +3,10 @@
   include_once 'views/ForbiddenWordsView.php';
   include_once 'models/ForbiddenWordsModel.php';
 
-  class ForbiddenWordsController extends Controller{
+  class ForbiddenWordsController extends SecuredController{
 
     function __construct(){
+      parent::__construct();
       $this->model = new ForbiddenWordsModel();
       $this->view = new ForbiddenWordsView();
     }

@@ -4,9 +4,10 @@
   include_once 'views/TasksView.php';
   include_once 'models/ForbiddenWordsModel.php';
 
-  class TasksController extends Controller{
+  class TasksController extends SecuredController{
 
     function __construct(){
+      parent::__construct();
       $this->tasksModel = new TasksModel();
       $this->forbiddenWordsModel = new ForbiddenWordsModel();
       $this->view = new TasksView();
@@ -14,7 +15,14 @@
 
     public function showPage(){
       $tasks = $this->tasksModel->getTasks();
-      $this->view->showTasks($tasks);
+      $session = $_SESSION['username'];
+      if (!empty($session)) {
+        $this->view->showTasks($tasks, $session);
+      }
+      else {
+        $this->view->showTasks($tasks);
+      }
+
     }
 
     public function create(){

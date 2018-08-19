@@ -20,6 +20,7 @@
       'deleteForbiddenWord'=> 'ForbiddenWordsController#delete',
 
       'login'=> 'LoginController#index',
+      'logout'=> 'LoginController#destroy',
       'verifyUser'=> 'LoginController#verify',
 
     ];
